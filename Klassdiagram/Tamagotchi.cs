@@ -5,22 +5,25 @@ namespace Klassdiagram
 {
     public class Tamagotchi
     {
-        private int hunger = 0;
+        int hunger = 0;
 
-        private int boredom = 0;
+        int boredom = 0;
 
-        private List<string> words = new List<string>();
+        List<string> words = new List<string>();
+        //public static List<string> words = new List<string>();
 
-        private bool isAlive = true;
+        bool isAlive = true;
 
-        private Random generator = new Random();
+        static Random generator = new Random(); 
 
         public string name;
 
-
         public void Feed ()
         {
-            hunger = -1; 
+            if(hunger > 0)
+            {
+                hunger = -1; 
+            }
         }
 
         public void Hi ()
@@ -62,7 +65,7 @@ namespace Klassdiagram
             return isAlive;
         }
 
-        private void ReduceBoredom()
+        void ReduceBoredom()
         {
             boredom = -1;
         }
