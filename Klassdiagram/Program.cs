@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using System.Runtime.ExceptionServices;
-using System;
+﻿using System;
 
 namespace Klassdiagram
 {
@@ -41,7 +39,7 @@ namespace Klassdiagram
 
                 string answer = Console.ReadLine().Trim().ToLower();
 
-                answerControl(answer);
+                answer = answerControl(answer);
 
                 if(answer == "a")
                 {
@@ -60,16 +58,21 @@ namespace Klassdiagram
                     
                 }
         }
-        static void answerControl(string answer)
+        static string answerControl(string answer)
         {
-            while(answer != "a" || answer != "b" || answer != "c" || answer != "d")
+            while(answer != "a" && answer != "b" && answer != "c" && answer != "d")
             {
                 System.Console.WriteLine("Wrong input!");
+
+                answer = Console.ReadLine().Trim().ToLower();
             }
+
+            return answer;
         }
         static void GameOver()
         {
-            System.Console.WriteLine();
+            System.Console.WriteLine("Game Over!");
+            Console.ReadLine();
         }
     }
 }

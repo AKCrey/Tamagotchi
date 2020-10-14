@@ -1,3 +1,4 @@
+using System.Net;
 using System;
 using System.Collections.Generic;
 
@@ -28,6 +29,7 @@ namespace Klassdiagram
 
         public void Hi ()
         {
+           if (words.Count == 0) return;
            Console.WriteLine(words[generator.Next(0, words.Count)]);
            ReduceBoredom();     
         }
@@ -35,13 +37,14 @@ namespace Klassdiagram
         public void Teach (string word)//Lägger till ett ord i listan.
         {
             words.Add(word);
+            System.Console.WriteLine(name + "successfully learned a new word!");
             ReduceBoredom();
         }
 
         public void Tick()
         {
-            hunger = +1;
-            boredom = +1;
+            hunger++;
+            boredom++;
             
             if(hunger >= 10 || boredom >= 10)
             {
@@ -51,8 +54,8 @@ namespace Klassdiagram
 
         public void PrintStats()
         {
-            System.Console.WriteLine("hunger:" + hunger);
-            System.Console.WriteLine("boredom" + boredom);
+            System.Console.WriteLine("hunger: " + hunger);
+            System.Console.WriteLine("boredom: " + boredom);
 
             if(isAlive == true)
             {
@@ -65,9 +68,9 @@ namespace Klassdiagram
             return isAlive;
         }
 
-        void ReduceBoredom()
+        private void ReduceBoredom()
         {
-            boredom = -1;
+            boredom = boredom - 1;
         }
 
     }
